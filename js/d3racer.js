@@ -60,7 +60,7 @@ d3Racer.prototype.finishers = function() {
     var filtered = [];
     var bin = probables[Math.floor(Math.random()*probables.length)];
     $.each(probables, function(i,filt) {
-      if ($.inArray(filt,filtered) === -1 && filt != bin) filtered.push(filt);
+      if (filt != bin) filtered.push(filt);
     });
     probables = filtered;
     
