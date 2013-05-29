@@ -1,0 +1,49 @@
+div#racer_container {
+	width: 500px;
+	height: 350px;
+	margin: 0 340px;
+	border: 1px solid black;
+	background: url("../images/grass.jpg");
+}
+
+div#racer_container div#finish_line {
+	float: left;
+	left: 20px;
+	width: 5px;
+	height: 90%;
+	background-color: white;
+}
+
+div#racer_container div#graphics {
+	float: left;
+	width: 90%;
+	height: 93%;
+}
+
+div#racer_container div#controls {
+	width: 100%;
+	text-align: center;
+}
+
+div#variables {
+	width: 1000px;
+	margin: 20px 80px 0 80px;
+	padding: 10px;
+	border: 1px solid black;
+	text-align: center;
+	background-color: #CCCCCC;
+}
+
+div#variables table {
+	border-collapse: collapse;
+	margin: 0 25%;
+	width: 50%;
+	background-color: #FFFFFF;
+}
+
+div#variables table th,
+div#variables table td {
+	text-align: center;
+	padding: 5px;
+	border: 1px solid black;
+}
