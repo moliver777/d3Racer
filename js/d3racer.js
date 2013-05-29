@@ -35,17 +35,15 @@ d3Racer.prototype.init = function(options) {
     this.finish_multipliers = {0: 1.0, 1: 0.9, 2: 0.8, 3: 0.75, 4: 0.7};
     this.data = {};
     
-    this.finishers();
     this.setup();
-    this.run();
-    
     console.log(this.data);
+    this.run();
   } catch(e) {
     alert(e);
   }
 }
 
-d3Racer.prototype.finishers = function() {
+d3Racer.prototype.setup = function() {
   var self = this;
   var probables = [];
   this.finishers = {};
@@ -77,12 +75,8 @@ d3Racer.prototype.finishers = function() {
   }
 }
 
-d3Racer.prototype.setup = function() {
-  
-}
-
 d3Racer.prototype.run = function() {
-  
+  // execute race animations
 }
 
 d3Racer.prototype.teardown = function() {
