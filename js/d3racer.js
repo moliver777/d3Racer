@@ -41,7 +41,7 @@ d3Racer.prototype.init = function(options) {
     this.duration = parseInt(options['duration']) || 3000;
     this.margin = (parseFloat(options['margin'])/50) || 0.2; // divide % by 50 to give double multiplier for +/-
     this.num_runners = (this.runners.length > this.max_finishers) ? this.max_finishers : this.runners.length;
-    this.finish_multipliers = {0: 1.0, 1: 0.9, 2: 0.8, 3: 0.75, 4: 0.7};
+    this.finish_multipliers = {0: 1.0, 1: 0.96, 2: 0.92, 3: 0.90, 4: 0.88, 5: 0.86, 6: 0.84, 7: 0.82, 8: 0.8, 9: 0.78, 10: 0.75};
     this.data = {};
     
     this.setup();
