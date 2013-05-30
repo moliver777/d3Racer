@@ -93,7 +93,7 @@ d3Racer.prototype.run = function() {
   
   var offset = function(pos) {return pos-self.runner_dimensions['x']};
   var y = d3.scale.linear()
-    .domain([0, this.num_runners])
+    .domain([0, this.num_runners+1])
     .range([0, this.height]);
   
   var track = d3.select("#"+this.container.attr('id'))
