@@ -23,34 +23,35 @@
     <table style="margin-bottom:10px;">
       <thead><th>Option</th><th>Value</th></thead>
       <tbody>
-        <tr id="duration"><td>Duration (ms)</td><td><input value="3000" /></td></tr>
+        <tr id="duration"><td>Duration (ms)</td><td><input value="500" /></td></tr>
         <tr id="max_finishers"><td>Max Finishers</td><td><input value="6" /></td></tr>
         <tr id="margin"><td>Margin (1-50)</td><td><input value="15" /></td></tr>
+        <tr id="runner_dimensions"><td>Runner Dimensions (WIDTHxHEIGHT)</td><td><input value="62x44" /></td></tr>
       </tbody>
     </table>
     <table>
       <thead><tr><th>Active</th><th>Name</th><th>Probability (0.00-1.00)</th></tr></thead>
       <tbody>
-        <tr data-bin="1" data-name="Runner 1"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td>Runner 1</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="2" data-name="Runner 2"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td>Runner 2</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="3" data-name="Runner 3"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td>Runner 3</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="4" data-name="Runner 4"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 4</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="5" data-name="Runner 5"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 5</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="6" data-name="Runner 6"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 6</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="7" data-name="Runner 7"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 7</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="8" data-name="Runner 8"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 8</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="9" data-name="Runner 9"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 9</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="10" data-name="Runner 10"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 10</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="11" data-name="Runner 11"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 11</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="12" data-name="Runner 12"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 12</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="13" data-name="Runner 13"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 13</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="14" data-name="Runner 14"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 14</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="15" data-name="Runner 15"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 15</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="16" data-name="Runner 16"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 16</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="17" data-name="Runner 17"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 17</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="18" data-name="Runner 18"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 18</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="19" data-name="Runner 19"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 19</td><td><input class="prob" value="0.50" /></td></tr>
-        <tr data-bin="20" data-name="Runner 20"><td><input type="checkbox" class="runner_cb" /></td><td>Runner 20</td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="1"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td><input class="name" value="Runner 1" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="2"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td><input class="name" value="Runner 2" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="3"><td><input type="checkbox" class="runner_cb" checked="true" disabled="true" /></td><td><input class="name" value="Runner 3" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="4"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 4" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="5"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 5" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="6"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 6" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="7"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 7" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="8"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 8" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="9"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 9" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="10"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 10" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="11"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 11" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="12"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 12" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="13"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 13" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="14"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 14" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="15"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 15" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="16"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 16" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="17"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 17" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="18"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 18" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="19"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 19" /></td><td><input class="prob" value="0.50" /></td></tr>
+        <tr data-bin="20"><td><input type="checkbox" class="runner_cb" /></td><td><input class="name" value="Runner 20" /></td><td><input class="prob" value="0.50" /></td></tr>
       </tbody>
     </table>
   </div>
@@ -63,7 +64,7 @@
       $.each($("input.runner_cb:checked"), function(i,cb) {
         runners.push({
           betting_interest_number: $(cb).parents("tr").data("bin"),
-          runner_name: $(cb).parents("tr").data("name"),
+          runner_name: $(cb).parents("tr").find("input.name").val(),
           probability: $(cb).parents("tr").find("input.prob").val()
         });
       });
@@ -74,7 +75,8 @@
         runners: runners,
         duration: $("tr#duration td input").val(),
         max_finishers: $("tr#max_finishers td input").val(),
-        margin: $("tr#margin td input").val()
+        margin: $("tr#margin td input").val(),
+        runner_dimensions: $("tr#runner_dimensions td input").val()
       });
     });
   });

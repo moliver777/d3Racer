@@ -7,6 +7,7 @@
 // max_finishers: maximum number of runners shown on animation (defaults to 6).
 // duration: milliseconds it will take winner to travel from start to finish (defaults to 3000).
 // margin: percentage increase/decrease the speeds can change between control points (defaults to 10%).
+// runner_dimensions: dimensions of runner gif (defaults to 62x44).
 // 
 
 var d3Racer = function(options) {
@@ -24,6 +25,14 @@ d3Racer.prototype.init = function(options) {
     } else {
       throw("Couldn't build d3racer. Runners is a mandatory option!");
     }
+    if (options['runner_dimensions']) {
+      this.runner_dimensions = {
+        x: options['runner_dimensions'].split("x")[0],
+        y: options['runner_dimensions'].split("x")[1]
+      }
+    } else {
+      this.runner_dimensions = {x: 62, y: 44}
+    }
     this.width = this.container.width();
     this.height = this.container.height();
     this.cp1 = Math.floor(this.width/3);
@@ -36,7 +45,6 @@ d3Racer.prototype.init = function(options) {
     this.data = {};
     
     this.setup();
-    console.log(this.data);
     this.run();
   } catch(e) {
     alert(e);
@@ -55,7 +63,7 @@ d3Racer.prototype.setup = function() {
   
   // randomly select unique winners for each desired finish position
   for (i=0;i<this.num_runners;i++) {
-    var filtered = [];
+    var filtered = [], name;
     var bin = probables[Math.floor(Math.random()*probables.length)];
     $.each(probables, function(i,filt) {
       if (filt != bin) filtered.push(filt);
@@ -63,10 +71,14 @@ d3Racer.prototype.setup = function() {
     probables = filtered;
     
     // data structure with finishing position and split times between control points
+    $.each(self.runners, function(i,runner) {
+      name = (runner['betting_interest_number'] == bin) ? runner['runner_name'] : name;
+    });
     var split1 = Math.floor((self.duration/3)*(1+((Math.random()*self.margin)-(self.margin/2))));
     var split2 = Math.floor((self.duration/3)*(1+((Math.random()*self.margin)-(self.margin/2))));
     self.data[i+1] = {
       bin: bin,
+      name: name,
       finish: (self.finish_multipliers[i] ? Math.floor(self.width*self.finish_multipliers[i]) : self.cp2),
       split1: split1,
       split2: split2,
@@ -76,7 +88,110 @@ d3Racer.prototype.setup = function() {
 }
 
 d3Racer.prototype.run = function() {
-  // execute race animations
+  var self = this;
+  var order = this.order();
+  
+  var offset = function(pos) {return pos-self.runner_dimensions['x']};
+  var y = d3.scale.linear()
+    .domain([0, this.num_runners])
+    .range([0, this.height]);
+  
+  var track = d3.select("#"+this.container.attr('id'))
+    .append("svg:svg")
+    .attr("width",this.width)
+    .attr("height",this.height)
+    .attr("id","racerSvg");
+  
+  $.each(order, function(i,position) {
+    runner = self.data[position];
+    track.append("svg:image")
+      .attr("class", "d3runner position"+position)
+      .attr("data-id", runner['bin'])
+      .attr("data-name", runner['name'])
+      .attr("x", offset(0))
+      .attr("y", y(i))
+      .attr("width", self.runner_dimensions['x'])
+      .attr("height", self.runner_dimensions['y'])
+      .attr("xlink:href", "../D3Racer/images/runner.gif")
+      .transition()
+        .duration(runner['split1'])
+        .ease("linear")
+        .attr("x", offset(self.cp1))
+      .transition()
+        .duration(runner['split2'])
+        .delay(runner['split1'])
+        .ease("linear")
+        .attr("x", offset(self.cp2))
+      .transition("linear")
+        .duration(runner['split3'])
+        .delay(runner['split1']+runner['split2'])
+        .ease("linear")
+        .attr("x", offset(runner['finish']))
+      .transition()
+        .duration(10000000)
+        .delay(self.duration)
+        .attr("xlink:href", "../D3Racer/images/runner.jpg");
+    
+    if (position == 1 || position == 2 || position == 3) {
+      var text, fill, font;
+      switch(position) {
+        case 1:
+          text = "1st: "+runner['bin'];
+          fill = "#CD7F32";
+          font = "#FFFFFF";
+        break;
+        case 2:
+          text = "2nd: "+runner['bin'];
+          fill = "#E6E8FA";
+          font = "#000000";
+        break;
+        case 3:
+          text = "3rd: "+runner['bin'];
+          fill = "#8C7853";
+          font = "#FFFFFF";
+        break;
+      }
+      track.append("svg:rect")
+        .attr("x", offset(runner['finish'])-60)
+        .attr("y", y(i)+10)
+        .attr("width", 60)
+        .attr("height", 25)
+        .attr("fill", fill)
+        .attr("stroke", "#000")
+        .attr("opacity", 0)
+        .transition()
+          .duration(500)
+          .delay(self.duration)
+          .attr("opacity", 1);
+      track.append("svg:text")
+        .attr("x", offset(runner['finish'])-55)
+        .attr("text-anchor", "right")
+        .attr("y", y(i)+28)
+        .attr("height", 25)
+        .attr("fill", font)
+        .text(text)
+        .attr("opacity", 0)
+        .transition()
+          .duration(500)
+          .delay(self.duration)
+          .attr("opacity", 1);
+    } else {
+      track.select(".runner"+position)
+        .attr("title", "rollover");
+    }
+  });
+}
+
+d3Racer.prototype.order = function() {
+  var arr = [], i = this.num_runners, j, temp;
+  for (i=0;i<this.num_runners;i++) arr.push(i+1);
+  while (--i) {
+    j = Math.floor(Math.random()*(i+1));
+    temp = arr[i];
+    arr[i] = arr[j]; 
+    arr[j] = temp;
+  }
+  return arr;
 }
 
 d3Racer.prototype.teardown = function() {
